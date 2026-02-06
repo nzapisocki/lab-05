@@ -78,12 +78,17 @@ public class MainActivity extends AppCompatActivity implements CityDialogFragmen
                     String name = snapshot.getString("name");
                     String province = snapshot.getString("province");
 
-                    cityArrayList.add(new City(name, province));
+                    City city = new City(name, province);
+                    city.setId(snapshot.getId());
+                    cityArrayList.add(city);
+
 
                 }
                 cityArrayAdapter.notifyDataSetChanged();
             }
         });
+
+
 
 
 
@@ -103,7 +108,8 @@ public class MainActivity extends AppCompatActivity implements CityDialogFragmen
         cityArrayList.add(city);
         cityArrayAdapter.notifyDataSetChanged();
 
-        DocumentReference docRef = citiesRef.document(city.getName());
+        DocumentReference docRef = citiesRef.document();
+        city.setId(docRef.getId());
         docRef.set(city);
 
     }

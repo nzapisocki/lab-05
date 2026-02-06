@@ -8,6 +8,8 @@ public class City implements Serializable {
     // attributes
     private String name;
     private String province;
+    private String id;
+
 
     // constructor
     public City(String name, String province) {
@@ -29,5 +31,13 @@ public class City implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
